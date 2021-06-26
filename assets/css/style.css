@@ -8806,7 +8806,7 @@ blockquote::before {
   background-image: url('../images/banners/shutterstock_244708312.jpg');
   background-color: #f4f5f7;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center 75%;
   border-bottom-width: 0px;
   padding-top: 80px;
   padding-bottom: 80px;
@@ -8815,6 +8815,9 @@ blockquote::before {
       padding-top: 80px;
       padding-bottom: 80px;
   }
+}
+.breadcrumb-title{
+  color: #f3f3f3;
 }
 .enq-btn{
   background-color: #00bff3;
