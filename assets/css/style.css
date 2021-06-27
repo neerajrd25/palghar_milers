@@ -8814,10 +8814,10 @@ blockquote::before {
   }
 }
 .breadcrumb-area {
-  background-image: url('../images/banners/shutterstock_244708312.jpg');
+  background-image: url('../images/banners/banner-4.jpg');
   background-color: #f4f5f7;
   background-repeat: no-repeat;
-  background-position: center 75%;
+  background-position: center 25%;
   border-bottom-width: 0px;
   padding-top: 80px;
   padding-bottom: 80px;
@@ -8842,6 +8842,7 @@ blockquote::before {
   background-color: #00bff3;
   color: #fff;
   height: 30px;
+  width: 100%;
 }
 .topbar span{
   text-align: right;
