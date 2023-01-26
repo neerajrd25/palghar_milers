@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Latest compiled and minified CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        * { box-sizing: border-box; }
+        div {
+            padding: 10px;
+            background-color: #f6f6f6;
+            overflow: hidden;
+        }
+        input[type=text], textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type=button]{ 
+            width: auto;
+            float: right;
+            cursor: pointer;
+            padding: 7px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!--Add few elements to the form-->
+        <h1>Palghar Milers</h1>
+        <div><label>Name</label><input type="text" id="txt1" placeholder="Name" /></div>
+        <div>
+            <label>Short Description</label><textarea id="txt2" name="txt2" placeholder="Short Description" style="height:100px"></textarea>
+        </div>
+        <div><label>BYCYCLE TYPE: </label><Select id="select1"><option value="MTB" selected>MTB</option><option value="HYBRID">HYBRID</option><option value="ROAD">ROAD</option><option value="KIDS">KIDS</option><option value="LADIES">LADIES</option></Select>
+            </div>
+        <div><label>Size</label><input type="text" id="txt8" placeholder="Size" value="-"  onfocus="javascript:this.select();" /></div>
+        <div><label>Frame Type</label><input type="text" id="txt3" placeholder="Frame Type"  value="-"/></div>
+        <div><label>Gears</label><Select id="txt4"><option value="Geared" selected>Geared</option><option value="Non-Geared">Non-Geared</option></Select></div>
+        <div><label>Brakes</label><input type="text" id="txt5" placeholder="Brakes "  value="-"/></div>
+        <div><label>Suspension</label><input type="text" id="txt6" placeholder="Suspension "  value="-" /></div>
+        <div><label>Tyres</label><input type="text" id="txt7" placeholder="Tyres"  value="-" /></div>
+        <div><label>Accessories Provided</label><input type="text" id="txt24" placeholder="Accessories Provided"  value="-" /></div>
+        <div><label>MRP</label><input type="text" id="txt25" placeholder="MRP "  value="-" /></div>
+        <div><label>Our Price</label><input type="text" id="txt26" placeholder="Our Price "  value="-" /></div>
+        
+        <div id="imagewrap"><div class="image" id="image1"><input type="file" id="img1" placeholder="Image" /><i onclick="uploadImage()" class="fa fa-plus"></i></div></div>
+        <table class="table table-bordered">
+            <tr>
+            <tr>
+                <th width="25%">FORK</th>
+                <td width="25%"><input type="text" id="txt11"  value="-"/></td>
+                <th width="25%">WHEELS</th>
+                <td width="25%"><input type="text" id="txt12"  value="-"/></td>
+            </tr>
+            <tr>
+                <th width="25%">CRANKSET</th>
+                <td width="25%"><input type="text" id="txt13"  value="-"/></td>
+                <th width="25%">BOTTOM BRACKET</th>
+                <td width="25%"><input type="text" id="txt14"  value="-"/></td>
+            </tr>
+            <tr>
+                <th width="25%">FRONT DERAILEUR</th>
+                <td width="25%"><input type="text" id="txt15"  value="-"/></td>
+                <th width="25%">REAR DERAILEUR</th>
+                <td width="25%"><input type="text" id="txt16"  value="-"/></td>
+            </tr>
+            <tr>
+                <th width="25%">SHIFTERS</th>
+                <td width="25%"><input type="text" id="txt17"  value="-"/></td>
+                <th width="25%">HANDELBAR</th>
+                <td width="25%"><input type="text" id="txt24"  value="-"/></td>
+            </tr>
+            <tr>
+                <th width="25%">SADDLE </th>
+                <td width="25%"><input type="text" id="txt19"  value="-"/></td>
+                <th width="25%">FREEWHEEL</th>
+                <td width="25%"><input type="text" id="txt20"  value="-"/></td>
+            </tr>
+            <tr>
+                <th width="25%">PEDALS  </th>
+                <td width="25%"><input type="text" id="txt23"  value="-"/></td>                
+            </tr>
+        </table>
+
+        <!--Add a button to save the data.-->
+        <div>
+            <input type="button" id="bt" value="Save data to file" onclick="saveFile()" /> 
+        </div>
+    </div>
+</body>
+    <script>
+        let saveFile = () => {
+            // This variable stores all the data.
+            let data = '<!DOCTYPE html>\n'+
+'<html class="no-js" lang="zxx">\n'+
+'<head>\n'+
+'   <meta charset="utf-8">\n'+
+'    <meta http-equiv="X-UA-Compatible" content="IE=edge">\n'+
+'    <title>Palghar Milers - The Bicycle Shop</title>\n'+
+'    <meta name="description" content="">\n'+
+'    <meta name="viewport" content="width=device-width, initial-scale=1">\n'+
+'    <!-- Favicon -->\n'+
+'    <link rel="icon" href="assets/images/favicon.ico">\n'+
+'    <!-- CSS        ============================================ -->\n'+
+'    <!-- Bootstrap Css -->\n'+
+'    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">\n'+
+'    <!-- Icons Css -->\n'+
+'    <link rel="stylesheet" href="assets/css/vendor/linearicons.min.css">\n'+
+'    <link rel="stylesheet" href="assets/css/vendor/fontawesome-all.min.css">\n'+
+'    <!-- Animation Css -->\n'+
+'    <link rel="stylesheet" href="assets/css/plugins/animation.min.css">\n'+
+'    <!-- Slick Slier Css -->\n'+
+'    <link rel="stylesheet" href="assets/css/plugins/slick.min.css">\n'+
+'    <!-- Magnific Popup CSS -->\n'+
+'    <link rel="stylesheet" href="assets/css/plugins/magnific-popup.css">\n'+
+'    <!-- Easyzoom CSS -->\n'+
+'    <link rel="stylesheet" href="assets/css/plugins/easyzoom.css">\n'+
+'    <!-- Main Style CSS -->\n'+
+'    <link rel="stylesheet" href="assets/css/style.css">\n'+
+'</head>\n'+
+'<body class="">\n'+
+'    <div class="row topbar">\n'+
+'        <span class="container">Contact us on: 8999564652  |  Email: palgharmilers2021@gmail.com</span>\n'+
+'    </div>\n'+
+'    <!--====================  header area ====================-->\n'+
+'    <div class="header-area header-area--default">\n'+
+'        <!-- Header Bottom Wrap Start -->\n'+
+'        <header class="header-area  header_height-90 header-sticky">\n'+
+'            <div class="container">\n'+
+'                <div class="row ">\n'+
+'                    <div class="col-lg-3 col-md-3 col-6">\n'+
+'                        <div class="logo">\n'+
+'                            <a href="index.html"><img src="assets/images/logo/logo.jpeg" width="160" alt=""></a>\n'+
+'                        </div>\n'+
+'                    </div>\n'+
+'                    <div class="col-lg-8 col-lg-8  d-none d-lg-block">\n'+
+'                        <!-- navigation menu -->\n'+
+'                        <div class="header__navigation d-none d-lg-block">\n'+
+'                            <nav class="navigation-menu">\n'+
+'                                <ul class="" style="float: right;">\n'+
+'                                    <li>\n'+
+'                                        <a href="index.html"><span>Home</span></a>\n'+
+'                                    </li>\n'+
+'                                    <li class="has-children has-children--multilevel-submenu">\n'+
+'                                        <a href="bicycles.html"><span>Bicycles</span></a>\n'+
+'                                        <!-- mega menu -->\n'+
+'                                        <ul class="submenu">\n'+
+'                                            <li><a href="mountain-bikes.html"><span>Mountain Bike</span></a></li>\n'+
+'                                            <li><a href="kids-bikes.html"><span>Kids Bike</span></a></li>\n'+
+'                                            <li><a href="hybrid-bikes.html"><span>Hybrid Bike</span></a></li>\n'+
+'                                            <li><a href="coming-soon.html"><span>Road Bike</span></a></li>\n'+
+'                                        </ul>\n'+
+'                                    </li>\n'+
+'                                    <li>\n'+
+'                                       <a href="accessories.html"><span>Accessories</span></a>\n'+
+'                                    </li>\n'+
+'                                    <li>\n'+
+'                                        <a href="coming-soon.html"><span>Workshop</span></a>\n'+
+'                                    </li>\n'+
+'                                    <li>\n'+
+'                                        <a href="contact-us.html"><span>Contact Us</span></a>\n'+
+'                                    </li>\n'+
+'                                </ul>\n'+
+'                            </nav>\n'+
+'                       </div>\n'+
+'                    </div>\n'+
+ '                   <div class="col-lg-1 col-md-1 col-6">\n'+
+  '                      <div class="header-right-side text-right">\n'+                            
+  '                          <div class="header-right-items">\n'+
+  '                              <a href="#" class="mobile-navigation-icon" id="mobile-menu-trigger">\n'+
+  '                                  <i class="icon-menu"></i>\n'+
+  '                              </a>\n'+
+  '                          </div>\n'+
+  '                      </div>\n'+
+  '                  </div>\n'+
+  '              </div>\n'+
+  '          </div>\n'+
+  '      </header>\n'+
+  '      <!-- Header Bottom Wrap End -->\n'+
+'    </div>\n'+
+'    <!--====================  End of header area  ====================-->\n'+
+'    <!-- breadcrumb-area start -->\n'+
+'    <div class="breadcrumb-area">\n'+
+'        <div class="container">\n'+
+'            <div class="row">\n'+
+'                <div class="col-12">\n'+
+'                    <div class="row breadcrumb_box  align-items-center">\n'+
+'                        <div class="col-lg-6 col-md-6 col-sm-6 text-center text-sm-left">\n'+
+'                            <h2 class="breadcrumb-title">Bicyles</h2>\n'+
+'                        </div>\n'+
+'                    </div>\n'+
+'                </div>\n'+
+'            </div>\n'+
+'        </div>\n'+
+'    </div>\n'+
+'    <div class="col-12">\n'+
+'        <div class="row breadcrumb_box  align-items-center">\n'+
+'            <div class="col-lg-12  col-md-12 col-sm-12">\n'+
+'               <!-- breadcrumb-list start -->\n'+
+'                <ul class="breadcrumb-list text-center text-sm-right">\n'+
+'                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>\n'+
+'                    <li class="breadcrumb-item active">Bicycles</li>\n'+
+'                </ul>\n'+
+'                <!-- breadcrumb-list end -->\n'+
+'            </div>\n'+
+'        </div>\n'+
+'    </div>\n'+
+'    <!-- breadcrumb-area end -->\n'+
+'    <div id="main-wrapper">\n'+
+'        <div class="site-wrapper-reveal">\n'+
+
+'            <div class="single-product-wrap section-space--pt_40 border-bottom">\n'+
+'               <div class="container">\n'+
+'                    <div class="row">\n'+
+'                        <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">\n'+
+'                            <!-- Product Details Left -->\n'+
+'                            <div class="product-details-left">\n'+
+'                                <div class="product-details-images-2 slider-lg-image-2">\n';
+    for(var i=1; i<= document.querySelectorAll('.image').length; i++){
+        data += '                                    <div class="easyzoom-style">\n'+
+'                                        <div class="easyzoom easyzoom--overlay">\n'+
+'                                                 <a href="assets/images/product/'+ document.getElementById('img'+i).files[0].name+'" class="poppu-img">\n'+
+'                                                <img src="assets/images/product/'+ document.getElementById('img'+i).files[0].name+'" class="img-fluid" alt="">\n'+
+'                                            </a>\n'+
+'                                        </div>\n'+
+'                                    </div>\n'
+    }
+    data += '                                </div>\n'+
+'                                <div class="product-details-thumbs-2 slider-thumbs-2">\n';
+
+    for(var i=1; i<= document.querySelectorAll('.image').length; i++){
+        data += '<div class="sm-image"><img src="assets/images/product/small/'+ document.getElementById('img'+i).files[0].name+'" alt="product image thumb"></div>\n'
+    }   
+
+                  data += '               </div>\n'+
+'                            </div>\n'+
+'                            <!--// Product Details Left -->\n'+
+'                        </div>\n'+
+'                        <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">\n'+
+'                            <div class="product-details-content ">\n'+
+'                                <h4 class="font-weight--reguler mb-10">'+ document.getElementById('txt1').value+'</h4>\n'+
+'                                <h3 class="price">MRP: <s>&#x20b9; '+ document.getElementById('txt25').value+'</s> <BR/>Our Price: &#x20b9; '+ document.getElementById('txt26').value+'</h3>\n'+
+'                                <div class="quickview-peragraph mt-10">\n'+
+'                                    <p>'+ document.getElementById("txt2").value+'</p>\n'+
+'                                </div>\n'+
+'                                <div class="product-color-wrapper mt-20">\n'+
+'                                    <ul class="feature_list">\n'+
+'                                        <li><i class="arrow_triangle-right"></i>Bicycle type : '+ document.getElementById('select1').value+'</li>\n'+
+'                                        <li><i class="arrow_triangle-right"></i>Size : '+ document.getElementById('txt8').value+'</li>\n'+
+'                                        <li><i class="arrow_triangle-right"></i>Frame type : '+ document.getElementById('txt3').value+'</li>\n'+
+'                                        <li><i class="arrow_triangle-right"></i>Gears : '+ document.getElementById('txt4').value+'</li>\n'+
+'                                        <li><i class="arrow_triangle-right"></i>Brakes : '+ document.getElementById('txt5').value+'</li>\n'+
+'                                        <li><i class="arrow_triangle-right"></i>Suspension : '+ document.getElementById('txt6').value+'</li>\n'+
+'                                        <li><i class="arrow_triangle-right"></i>Tyres : '+ document.getElementById('txt7').value+'</li>\n'+
+'                                        <li><i class="arrow_triangle-right"></i>Accessories Provided : '+ document.getElementById('txt24').value+'</li>\n'+
+'                                    </ul>\n'+
+'                                </div>\n'+
+'                                <div class="quickview-action-wrap mt-30">\n'+
+'                                    <div class="quickview-cart-box">\n'+
+'                                        <div class="quickview-button">\n'+
+'                                            <div class="quickview-cart button">\n'+
+'                                               <a href="#" class="btn--lg enq-btn font-weight--reguler text-white">For Enquiry Call or What\'sapp us on 8999564652</a>\n'+
+'                                            </div>\n'+
+'                                        </div>\n'+
+'                                    </div>\n'+
+'                                </div>\n'+
+'                            </div>\n'+
+'                        </div>\n'+
+'                    </div>\n'+
+'                    <div class="row">\n'+
+'                        <div class="col-12">\n'+
+'                            <div class="product-details-tab">\n'+
+'                                <ul role="tablist" class=" nav">\n'+
+'                                    <li class="active" role="presentation">\n'+
+'                                        <a data-toggle="tab" class="active" role="tab" href="#sheet">Additional information</a>\n'+
+'                                    </li>\n'+                                    
+'                                </ul>\n'+
+'                            </div>\n'+
+'                        </div>\n'+
+'                        <div class="col-12">\n'+
+'                            <div class="product_details_tab_content tab-content mt-30">\n'+
+'                                <!-- Start Single Content -->\n'+
+'                                <div class="product_tab_content tab-pane active" id="sheet" role="tabpanel">\n'+
+'                                    <div class="pro_feature">\n'+
+'                                        <table style="border:1px solid #cdcdcd; margin-bottom: 20px;" cellspacing="10" cellpadding="10" class="shop_attributes">\n'+
+'                                            <tbody>\n'+
+'                                             <tr>\n'+
+'                                                <th scope="row">BICYCLE TYPE</th>\n'+
+'                                                <td>:</td>\n'+
+'                                                <td align="left" valign="middle">'+ document.getElementById('select1').value+'  '+ document.getElementById('txt4').value+'</td>\n'+
+'                                            </tr>\n'+
+'                                             <tr>\n'+
+'                                                <th scope="row" colspan="3" align="left" valign="middle">&nbsp;</th>\n'+
+'                                            </tr>\n'+
+'                                            <tr>\n'+
+'                                                <th scope="row">FRAME </th>\n'+
+'                                                <td>:</td>\n'+
+'                                                <td align="left" valign="middle">'+ document.getElementById('txt3').value+'</td>\n'+
+'                                            </tr>\n'+
+'                                            <tr>\n'+
+'                                                <th scope="row">FORK</th>\n'+
+'                                                <td>:</td>\n'+
+'                                                <td align="left" valign="middle">'+ document.getElementById('txt11').value+'</td>\n'+
+'                                            </tr>\n'+
+'                                            <tr>\n'+
+'                                                <th scope="row">WHEELS</th>\n'+
+'                                                <td>:</td>\n'+
+'                                                <td align="left" valign="middle">'+ document.getElementById('txt12').value+'</td>\n'+
+'                                            </tr>\n'+
+'                                            <tr>\n'+
+'                                                <th scope="row">SHIFTERS </th>\n'+
+'                                                <td>:</td>\n'+
+'                                                <td align="left" valign="middle">'+ document.getElementById('txt17').value+'</td>\n'+
+'                                            </tr>\n'+
+'                                            <tr>\n'+
+'                                                <th scope="row">TYRES&nbsp;</th>\n'+
+'                                                <td>:</td>\n'+
+'                                                <td align="left" valign="middle">'+ document.getElementById('txt7').value+'</td>\n'+
+'                                            </tr>\n'+
+'                                            <tr>\n'+
+'                                                <th scope="row">FRONT DERAILEUR</th>\n'+
+'                                                <td>:</td>\n'+
+'                                                <td align="left" valign="middle">'+ document.getElementById('txt15').value+'</td>\n'+
+'                                            </tr>\n'+
+'                                            <tr>\n'+
+'                                                <th scope="row">BRAKES</th>\n'+
+'                                                <td>:</td>\n'+
+'                                                <td align="left" valign="middle">'+ document.getElementById('txt5').value+'</td>\n'+
+'                                            </tr>\n'+
+'                                            <tr>\n'+
+'                                                <th scope="row">REAR DERAILEUR</th>\n'+
+'                                                <td>:</td>\n'+
+'                                                <td align="left" valign="middle">'+ document.getElementById('txt16').value+'</td>\n'+
+'                                            </tr>\n'+
+'                                            <tr>\n'+
+'                                                <th scope="row">SADDLE</th>\n'+
+'                                                <td>:</td>\n'+
+'                                                <td align="left" valign="middle">'+ document.getElementById('txt19').value+'</td>\n'+
+'                                            </tr>\n'+
+'                                            <tr>\n'+
+'                                                <th scope="row">BOTTOM BRACKET</th>\n'+
+'                                                <td>:</td>\n'+
+'                                                <td align="left" valign="middle">'+ document.getElementById('txt14').value+' </td>\n'+
+'                                            </tr>\n'+
+'                                            <tr>\n'+
+'                                                <th scope="row">FREEWHEEL</th>\n'+
+'                                                <td>:</td>\n'+
+'                                                <td align="left" valign="middle">'+ document.getElementById('txt20').value+'</td>\n'+
+'                                            </tr>\n'+
+'                                            <tr>\n'+
+'                                                <th scope="row">HANDELBAR</th>\n'+
+'                                                <td>:</td>\n'+
+'                                                <td align="left" valign="middle">'+ document.getElementById('txt24').value+'</td>\n'+
+'                                            </tr>\n'+
+'                                            <tr>\n'+
+'                                                <th scope="row">PEDALS &nbsp;</th>\n'+
+'                                                <td>:</td>\n'+
+'                                                <td align="left" valign="middle">'+ document.getElementById('txt23').value+'</td>\n'+
+'                                            </tr>\n'+
+'                                            <tr>\n'+
+'                                                <th scope="row">CRANKSET</th>\n'+
+'                                                <td>:</td>\n'+
+'                                                <td align="left" valign="middle">'+ document.getElementById('txt13').value+'</td>\n'+
+'                                            </tr>\n'+
+'                                            </tbody>\n'+
+'                                        </table>\n'+
+'                                    </div>\n'+
+'                                </div>\n'+
+'                                <!-- End Single Content -->\n'+
+'                                <!-- Start Single Content -->\n'+
+'                                <div class="product_tab_content tab-pane" id="reviews" role="tabpanel">\n'+
+'                                    <!-- Start RAting Area -->\n'+
+'                                    <div class="rating_wrap mb-30">\n'+
+'                                       <h4 class="rating-title-2">Be the first to review “Wooden chair”</h4>\n'+
+'                                        <p>Your rating</p>\n'+
+'                                        <div class="rating_list">\n'+
+'                                            <div class="product-rating d-flex">\n'+
+'                                                <i class="yellow icon_star"></i>\n'+
+'                                                <i class="yellow icon_star"></i>\n'+
+'                                                <i class="yellow icon_star"></i>\n'+
+'                                                <i class="yellow icon_star"></i>\n'+
+'                                                <i class="yellow icon_star"></i>\n'+
+'                                            </div>\n'+
+'                                        </div>\n'+
+'                                    </div>\n'+
+'                                   <!-- End RAting Area -->\n'+
+'                                    <div class="comments-area comments-reply-area">\n'+
+'                                        <div class="row">\n'+
+'                                            <div class="col-lg-12">\n'+
+'                                                <form action="#" class="comment-form-area">\n'+
+'                                                    <p class="comment-form-comment">\n'+
+'                                                        <label>Your review *</label>\n'+
+'                                                        <textarea class="comment-notes" required="required"></textarea>\n'+
+'                                                    </p>\n'+
+'                                                    <div class="comment-input">\n'+
+'                                                       <p class="comment-form-author">\n'+
+'                                                           <label>Name <span class="required">*</span></label>\n'+
+'                                                         <input type="text" required="required" name="Name">\n'+
+'                                                       </p>\n'+
+'                                                        <p class="comment-form-email">\n'+
+'                                                            <label>Email <span class="required">*</span></label>\n'+
+'                                                            <input type="text" required="required" name="email">\n'+
+'                                                       </p>\n'+
+'                                                    </div>\n'+
+'                                                    <div class="comment-form-submit">\n'+
+ '                                                       <input type="submit" value="Submit" class="comment-submit">\n'+
+  '                                                  </div>\n'+
+    '                                            </form>\n'+
+   '                                         </div>\n'+
+   '                                     </div>\n'+
+    '                                </div>\n'+
+     '                           </div>\n'+
+      '                          <!-- End Single Content -->\n'+
+       '                     </div>\n'+
+        '                </div>\n'+
+         '           </div>\n'+
+          '      </div>\n'+
+           ' </div>\n'+
+'        </div>\n'+
+'       <!--====================  footer area ====================-->\n'+
+'       <div class="footer-area-wrapper footerbg">\n'+
+'        <div class="footer-area section-space--ptb_120">\n'+
+'            <div class="container">\n'+
+'                <div class="row footer-widget-wrapper">\n'+
+'                    <div class="col-lg-4 col-md-4 col-sm-6 footer-widget">\n'+
+'                        <h6 class="footer-widget__title mb-20">Address</h6>\n'+
+'                        <ul class="footer-widget__list">\n'+
+'                            <li><i class="icon_pin"></i> Palghar Milers, Shubh Angan, Shop No. 2, <br />Mahim Manor Road, Palghar(w), 401404</li>\n'+
+'                            <li> <i class="icon_phone"></i><a href="tel:918999564652"   class="hover-style-link">+91 8999564652</a></li>\n'+
+'                        </ul>\n'+
+ '                       <ul class="list footer-social-networks mt-25">\n'+
+  '                          <li class="item">\n'+
+   '                             <a href="https://twitter.com" target="_blank" aria-label="Twitter">\n'+
+    '                                <i class="social social_facebook"></i>\n'+
+     '                           </a>\n'+
+      '                      </li>\n'+
+       '                     <li class="item">\n'+
+        '                        <a href="https://facebook.com" target="_blank" aria-label="Facebook">\n'+
+         '                           <i class="social social_twitter"></i>\n'+
+          '                      </a>\n'+
+           '                 </li>\n'+
+            '                <li class="item">\n'+
+             '                   <a href="https://instagram.com" target="_blank" aria-label="Instagram">\n'+
+              '                      <i class="social social_tumblr"></i>\n'+
+               '                 </a>\n'+
+                '            </li>\n'+
+                 '       </ul>\n'+
+                  '  </div>\n'+
+                   ' <div class="col-lg-3 col-md-4 col-sm-6 footer-widget">\n'+
+                    '    <h6 class="footer-widget__title mb-20">Bicycles</h6>\n'+
+                     '   <ul class="footer-widget__list">\n'+
+                      '      <li><a href="mountain-bikes.html" class="hover-style-link">Mountain Bikes</a></li>\n'+
+                       '     <li><a href="hybrid-bikes.html" class="hover-style-link">Hybrid Bikes</a></li>\n'+
+                        '    <li><a href="kids-bikes.html" class="hover-style-link">Kids Bikes</a></li>\n'+
+                         '   <li><a href="#" class="hover-style-link">Road Bikes</a></li>\n'+
+'                        </ul>\n'+
+ '                   </div>\n'+
+  '                  <div class="col-lg-2 col-md-4 col-sm-6 footer-widget">\n'+
+   '                     <h6 class="footer-widget__title mb-20"><a href="coming-soon.html" class="hover-style-link">Workshop</a></h6>\n'+
+    '                </div>\n'+
+     '               <div class="col-lg-2 col-md-4 col-sm-6 footer-widget">\n'+
+      '                  <h6 class="footer-widget__title mb-20"><a href="contact-us.html" class="hover-style-link">Contact Us</a></h6>\n'+
+       '             </div>\n'+                   
+        '        </div>\n'+
+         '   </div>\n'+'        </div>\n'+
+ '       <div class="footer-copyright-area section-space--pb_30">\n'+
+  '          <div class="container">\n'+
+   '             <div class="row align-items-center">\n'+
+    '                <div class="col-lg-4 col-md-2 text-center">\n'+
+     '                   <div class="footer-logo">\n'+
+      '                      <a href="#"><img src="assets/images/logo/logo.jpeg" width="180" alt="Logo images"></a>\n'+
+       '                 </div>\n'+
+        '            </div>\n'+
+         '           <div class="col-lg-8">\n'+
+          '              <span class="copyright-text text-center">&copy; 2021 Palghar Milers. <a href="#" target="_blank">All Rights Reserved.</a></span>\n'+
+            '        </div>\n'+
+             '   </div>\n'+'            </div>\n'+
+ '       </div>\n'+
+  '  </div>\n'+
+   ' <!--====================  End of footer area  ====================-->\n'+
+	'</div>\n'+'    <!-- Modal -->\n'+
+ '   <div class="product-modal-box modal fade" id="prodect-modal" tabindex="-1" role="dialog">\n'+
+  '      <div class="modal-dialog  modal-dialog-centered" role="document">\n'+
+   '         <div class="modal-content">\n'+
+    '            <div class="modal-header">\n'+
+     '               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="icon-cross" aria-hidden="true"></span></button>\n'+
+      '          </div>\n'+
+       '         <div class="modal-body container">\n'+
+        '            <div class="row align-items-center">\n'+
+         '               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">\n'+
+          '                  <div class="quickview-product-active mr-lg-5">\n'+
+           '                     <a href="#" class="images">\n'+'                                    <img src="assets/images/product/2-570x570.jpg" class="img-fluid" alt="">\n'+'                                </a>\n'+'                                <a href="#" class="images">\n'+'                                    <img src="assets/images/product/3-600x600.jpg" class="img-fluid" alt="">\n'+'                                </a>\n'+'                                <a href="#" class="images">\n'+'                                    <img src="assets/images/product/4-768x768.jpg" class="img-fluid" alt="">\n'+'                               </a>\n'+'                            </div>\n'+'                            <!-- Thumbnail Large Image End -->\n'+'                        </div>\n'+'                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">\n'+'                            <div class="product-details-content quickview-content-wrap ">\n'+'                                <h5 class="font-weight--reguler mb-10">Teapot with black tea</h5>\n'+'                                <div class="quickview-ratting-review mb-10">\n'+'                                    <div class="quickview-ratting-wrap">\n'+'                                        <div class="quickview-ratting">\n'+'                                            <i class="yellow icon_star"></i>\n'+'                                            <i class="yellow icon_star"></i>\n'+'                                            <i class="yellow icon_star"></i>\n'+'                                            <i class="yellow icon_star"></i>\n'+'                                            <i class="yellow icon_star"></i>\n'+'                                        </div>\n'+'                                        <a href="#"> 2 customer review</a>\n'+'                                    </div>\n'+'                                </div>\n'+'                                <h3 class="price">£59.99</h3>\n'+'                                <div class="stock in-stock mt-10">\n'+'                                    <p>Available: <span>In stock</span></p>\n'+'                                </div>\n'+'                                <div class="quickview-peragraph mt-10">\n'+'                                    <p>At vero accusamus et iusto odio dignissimos blanditiis praesentiums dolores molest.</p>\n'+'                                </div>\n'+'                                <div class="quickview-action-wrap mt-30">\n'+'                                    <div class="quickview-cart-box">\n'+'                                        <div class="quickview-quality">\n'+'                                            <div class="cart-plus-minus">\n'+'                                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="0">\n'+'                                            </div>\n'+'                                        </div>\n'+
+'                                        <div class="quickview-button">\n'+
+    '                                            <div class="quickview-cart button">\n'+
+    '                                                <a href="#" class="btn--lg btn--black font-weight--reguler text-white">Add to cart</a>\n'+
+    '                                            </div>\n'+
+'                                            <div class="quickview-wishlist button">\n'+'                                                <a title="Add to wishlist" href="#"><i class="icon-heart"></i></a>\n'+'                                            </div>\n'+'                                        </div>\n'+'                                    </div>\n'+'                                </div>\n'+'                                <div class="product_meta mt-30">\n'+'                                    <div class="sku_wrapper item_meta">\n'+'                                        <span class="label"> SKU: </span>\n'+'                                        <span class="sku"> 502 </span>\n'+'                                    </div>\n'+'                                    <div class="posted_in item_meta">\n'+'                                        <span class="label">Categories: </span><a href="#">Furniture</a>, <a href="#">Table</a>\n'+'                                    </div>\n'+'                                    <div class="tagged_as item_meta">\n'+'                                        <span class="label">Tag: </span><a href="#">Pottery</a>\n'+'                                    </div>\n'+'                                </div>\n'+'                                <div class="product_socials section-space--mt_60">\n'+'                                    <span class="label">Share this items :</span>\n'+'                                    <ul class="helendo-social-share socials-inline">\n'+'                                        <li>\n'+'                                            <a class="share-twitter helendo-twitter" href="#" target="_blank"><i class="social_twitter"></i></a>\n'+'                                        </li>\n'+'                                        <li>\n'+'                                            <a class="share-facebook helendo-facebook" href="#" target="_blank"><i class="social_facebook"></i></a>\n'+'                                        </li>\n'+'                                        <li>\n'+'                                            <a class="share-google-plus helendo-google-plus" href="#" target="_blank"><i class="social_googleplus"></i></a>\n'+'                                        </li>\n'+'                                        <li>\n'+'                                            <a class="share-pinterest helendo-pinterest" href="#" target="_blank"><i class="social_pinterest"></i></a>\n'+'                                        </li>\n'+'                                        <li>\n'+'                                            <a class="share-linkedin helendo-linkedin" href="#" target="_blank"><i class="social_linkedin"></i></a>\n'+'                                        </li>\n'+'                                    </ul>\n'+'                                </div>\n'+
+'                            </div>\n'+'                        </div>\n'+'                    </div>\n'+'                </div>\n'+'            </div>\n'+'        </div>\n'+'    </div>\n'+'    <!-- Modal end -->\n'+'    <!-- Modal -->\n'+'    <div class="header-login-register-wrapper modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">\n'+'        <div class="modal-dialog modal-dialog-centered">\n'+'            <div class="modal-content">\n'+'                <div class="modal-box-wrapper">\n'+'                    <div class="helendo-tabs">\n'+'                        <ul class="nav" role="tablist">\n'+'                            <li class="tab__item nav-item active">\n'+'                                <a class="nav-link active" data-toggle="tab" href="#tab_list_06" role="tab">Login</a>\n'+'                            </li>\n'+'                            <li class="tab__item nav-item">\n'+'                                <a class="nav-link" data-toggle="tab" href="#tab_list_07" role="tab">Our Register</a>\n'+'                            </li>\n'+'                        </ul>\n'+'                    </div>\n'+'                    <div class="tab-content content-modal-box">\n'+'                        <div class="tab-pane fade show active" id="tab_list_06" role="tabpanel">\n'+'                            <form action="#" class="account-form-box">\n'+'                                <h6>Login your account</h6>\n'+'                                <div class="single-input">\n'+'                                    <input type="text" placeholder="Username">\n'+'                                </div>\n'+'                                <div class="single-input">\n'+'                                    <input type="password" placeholder="Password">\n'+'                                </div>\n'+'                                <div class="checkbox-wrap mt-10">\n'+'                                    <label class="label-for-checkbox inline mt-15">\n'+'                                        <input class="input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever"> <span>Remember me</span>\n'+'                                    </label>\n'+'                                    <a href="#" class=" mt-10">Lost your password?</a>\n'+'                                </div>\n'+'                                <div class="button-box mt-25">\n'+'                                    <a href="#" class="btn btn--full btn--black">Log in</a>\n'+'                                </div>\n'+'                            </form>\n'+'                        </div>\n'+'                        <div class="tab-pane fade" id="tab_list_07" role="tabpanel">\n'+'                            <form action="#" class="account-form-box">\n'+'                                <h6>Register An Account</h6>\n'+'                                <div class="single-input">\n'+'                                    <input type="text" placeholder="Username">\n'+'                                </div>\n'+'                                <div class="single-input">\n'+'                                    <input type="text" placeholder="Email address">\n'+'                                </div>\n'+'                                <div class="single-input">\n'+'                                    <input type="password" placeholder="Password">\n'+'                                </div>\n'+'                                <p class="mt-15">Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="#" class="privacy-policy-link" target="_blank">privacy policy</a>.</p>\n'+'                                <div class="button-box mt-25">\n'+'                                    <a href="#" class="btn btn--full btn--black">Register</a>\n'+'                                </div>\n'+'                            </form>\n'+'                        </div>\n'+
+'                    </div>\n'+'                </div>\n'+'            </div>\n'+'        </div>\n'+'    </div>\n'+'    <!-- Modal -->\n'+'    <div class="header-login-register-wrapper modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">\n'+'        <div class="modal-dialog modal-dialog-centered">\n'+'            <div class="modal-content">\n'+'                <div class="modal-box-wrapper">\n'+'                    <div class="helendo-tabs">\n'+'                        <ul class="nav" role="tablist">\n'+'                            <li class="tab__item nav-item active">\n'+'                                <a class="nav-link active" data-toggle="tab" href="#tab_list_06" role="tab">Login</a>\n'+'                            </li>\n'+'                            <li class="tab__item nav-item">\n'+'                                <a class="nav-link" data-toggle="tab" href="#tab_list_07" role="tab">Our Register</a>\n'+'                            </li>\n'+'                        </ul>\n'+'                    </div>\n'+'                    <div class="tab-content content-modal-box">\n'+'                        <div class="tab-pane fade show active" id="tab_list_06" role="tabpanel">\n'+'                            <form action="#" class="account-form-box">\n'+'                                <h6>Login your account</h6>\n'+'                                <div class="single-input">\n'+'                                    <input type="text" placeholder="Username">\n'+'                                </div>\n'+'                                <div class="single-input">\n'+'                                    <input type="password" placeholder="Password">\n'+'                                </div>\n'+'                                <div class="checkbox-wrap mt-10">\n'+'                                    <label class="label-for-checkbox inline mt-15">\n'+'                                        <input class="input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever"> <span>Remember me</span>\n'+'                                    </label>\n'+'                                    <a href="#" class=" mt-10">Lost your password?</a>\n'+'                                </div>\n'+'                                <div class="button-box mt-25">\n'+'                                    <a href="#" class="btn btn--full btn--black">Log in</a>\n'+'                                </div>\n'+'                            </form>\n'+'                        </div>\n'+'                        <div class="tab-pane fade" id="tab_list_07" role="tabpanel">\n'+'                           <form action="#" class="account-form-box">\n'+'                                <h6>Register An Account</h6>\n'+'                                <div class="single-input">\n'+'                                    <input type="text" placeholder="Username">\n'+'                                </div>\n'+'                                <div class="single-input">\n'+'                                    <input type="text" placeholder="Email address">\n'+'                                </div>\n'+'                                <div class="single-input">\n'+'                                    <input type="password" placeholder="Password">\n'+'                                </div>\n'+'                                <p class="mt-15">Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="#" class="privacy-policy-link" target="_blank">privacy policy</a>.</p>\n'+'                                <div class="button-box mt-25">\n'+'                                    <a href="#" class="btn btn--full btn--black">Register</a>\n'+'                                </div>\n'+'                            </form>\n'+'                        </div>\n'+'                    </div>\n'+'                </div>\n'+'            </div>\n'+'        </div>\n'+'    </div>\n'+'    <!--====================  mobile menu overlay ====================-->\n'+'    <div class="mobile-menu-overlay" id="mobile-menu-overlay">\n'+'        <div class="mobile-menu-overlay__inner">\n'+
+'            <div class="mobile-menu-close-box text-left">\n'+
+    '                <span class="mobile-navigation-close-icon" id="mobile-menu-close-trigger">\n'+
+
+'                                      <i class="icon-cross2"></i></span>\n'+'            </div>\n'+'            <div class="mobile-menu-overlay__body">   \n'+         
+'                <nav class="offcanvas-navigation">\n'+'                    <ul>\n'+'                        <li>\n'+'                            <a href="index.html">Home</a>       \n'+                     
+'                        </li>\n'+'                        <li class="has-children">\n'+'                            <a href="#">Bicycles</a>\n'+'                            <ul class="sub-menu">\n'+'                                <li class="has-children">\n'+'                                    <a href="mountain-bikes.html"><span>Mountain Bikes</span></a>      \n'+                              
+'                                </li>\n'+'                                <li class="has-children">\n'+'                                    <a href="kids-bikes.html"><span>Kids Bikes</span></a>              \n'+                      
+'                                </li>\n'+'                                <li class="has-children">\n'+'                                    <a href="hybrid-bikes.html"><span>Hybrid Bikes</span></a>      \n'+                              
+'                                </li>\n'+'                                <li class="has-children">\n'+'                                    <a href="coming-soon.html"><span>Road Bikes</span></a>    \n'+                                
+'                                </li>\n'+'                            </ul>\n'+'                        </li>\n'+'                        <li>\n'+'                            <a href="accessories.html">Accessories</a>  \n'+                          
+'                        </li>\n'+'                        <li>\n'+'                            <a href="coming-soon.html">Workshop</a>       \n'+                     
+'                        </li>\n'+'                        <li>\n'+'                            <a href="contact-us.html">Contact Us</a>      \n'+                      
+'                        </li>\n'+'                    </ul>\n'+'                </nav>\n'+'                <div class="mobile-menu-social-share section-space--mt_60">\n'+'                    <h6>Follow US On Socials</h6>\n'+'                    <ul class="social-share">\n'+'                        <li class="">\n'+'                            <a href="https://facebook.com" target="_blank" aria-label="Twitter">\n'+'                                <i class="social social_facebook"></i>\n'+'                            </a>\n'+'                        </li>\n'+'                        <li class="">\n'+'                            <a href="https://twitter.com" target="_blank" aria-label="Facebook">\n'+
+    '                                <i class="social social_twitter"></i>\n'+'                            </a>\n'+
+    '                        </li>\n'+
+     '                   <li class="">\n'+
+    '                        <a href="https://instagram.com" target="_blank" aria-label="Instagram">\n'+
+    '                            <i class="social social_tumblr"></i>\n'+
+   '                         </a>\n'+
+   '                     </li>\n'+
+   '                 </ul>\n'+
+   '             </div>\n'+
+   '         </div>\n'+
+  '      </div>\n'+
+ '   </div>\n'+
+ '   <!--====================  End of mobile menu overlay  ====================-->\n'+
+ '   <!--  offcanvas Minicart Start -->\n'+'    <div class="offcanvas-minicart_wrapper" id="miniCart">\n'+
+ '       <div class="offcanvas-menu-inner">\n'+'            <div class="close-btn-box">\n'+
+ '               <a href="#" class="btn-close"><i class="icon-cross2"></i></a>\n'+
+ '           </div>\n'+
+   '         <div class="minicart-content">\n'+
+  '              <ul class="minicart-list">\n'+
+  '                  <li class="minicart-product">\n'+
+  '                      <a class="product-item_remove" href="javascript:void(0)"><i class="icon-cross2"></i></a>\n'+
+  '                      <a class="product-item_img">\n'+
+  '                          <img class="img-fluid" src="assets/images/product/small/cart-01.jpg" alt="Product Image">\n'+
+  '                      </a>\n'+
+ '                       <div class="product-item_content">\n'+
+ '                           <a class="product-item_title" href="#">Plant pots</a>\n'+
+ '                           <label>Qty : <span>1</span></label>\n'+
+ '                           <label class="product-item_quantity">Price: <span> $20.00</span></label>\n'+
+ '                       </div>\n'+
+ '                   </li>\n'+
+ '                   <li class="minicart-product">\n'+
+  '                      <a class="product-item_remove" href="javascript:void(0)"><i class="icon-cross2"></i></a>\n'+
+ '                       <a class="product-item_img">\n'+
+ '                           <img class="img-fluid" src="assets/images/product/small/cart-02.jpg" alt="Product Image">\n'+
+ '                       </a>\n'+'                        <div class="product-item_content">\n'+'                            <a class="product-item_title" href="#">Teapot with black tea</a>\n'+'                            <label>Qty : <span>1</span></label>\n'+'                            <label class="product-item_quantity">Price: <span> $20.00</span></label>\n'+'                        </div>\n'+'                    </li>\n'+'                    <li class="minicart-product">\n'+
+ '                       <a class="product-item_remove" href="javascript:void(0)"><i class="icon-cross2"></i></a>\n'+'                        <a class="product-item_img">\n'+
+ '                           <img class="img-fluid" src="assets/images/product/small/cart-03.jpg" alt="Product Image">\n'+
+ '                       </a>\n'+
+ '                       <div class="product-item_content">\n'+'                            <a class="product-item_title" href="#">Simple Chair</a>\n'+
+ '                           <label>Qty : <span>1</span></label>\n'+
+ '                           <label class="product-item_quantity">Price: <span> $20.00</span></label>\n'+'                        </div>\n'+'                    </li>\n'+
+      '          </ul>\n'+
+     '       </div>\n'+
+     '       <div class="minicart-item_total">\n'+
+    '            <span class="font-weight--reguler">Subtotal:</span>\n'+
+    '            <span class="ammount font-weight--reguler">$60.00</span>\n'+
+     '       </div>\n'+
+     '       <div class="minicart-btn_area">\n'+
+    '            <a href="cart.html" class="btn btn--full btn--border_1">View cart</a>\n'+
+    '        </div>\n'+
+   '         <div class="minicart-btn_area">\n'+
+    '            <a href="checkout.html" class="btn btn--full btn--black">Checkout</a>\n'+
+   '         </div>\n'+
+   '     </div>\n'+
+
+  '      <div class="global-overlay"></div>\n'+
+  '  </div>\n'+
+  '  <!--  offcanvas Minicart End -->\n'+
+  '  <!--====================  search overlay ====================-->\n'+
+ '   <div class="search-overlay" id="search-overlay">\n'+
+ '       <div class="search-overlay__header">\n'+
+  '          <div class="container">\n'+
+  '              <div class="row align-items-center">\n'+
+   '                 <div class="col-lg-6 col-8">\n'+
+  '                      <div class="search-title">\n'+
+ '                           <h4 class="font-weight--normal">Search</h4>\n'+
+ '                       </div>\n'+
+  '                  </div>\n'+
+ '                   <div class="col-md-6 ml-auto col-4">\n'+
+ '                       <!-- search content -->\n'+
+  '                      <div class="search-content text-right">\n'+
+  '                          <span class="mobile-navigation-close-icon" id="search-close-trigger"><i class="icon-cross"></i></span>\n'+
+ '                       </div>\n'+
+ '                   </div>\n'+
+ '               </div>\n'+
+ '           </div>\n'+
+ '       </div>\n'+
+  '      <div class="search-overlay__inner">\n'+
+ '           <div class="search-overlay__body">\n'+
+ '               <div class="search-overlay__form">\n'+'                    <div class="container">\n'+'                        <div class="row">\n'+'                            <div class="col-lg-9 ml-auto mr-auto">\n'+'                                <form action="#">\n'+'                                    <div class="product-cats section-space--mb_60 text-center">\n'+'                                        <label> <input type="radio" name="product_cat" value="" checked="checked"> <span class="line-hover">All</span> </label>\n'+
+ '                                       <label> <input type="radio" name="product_cat" value="decoration"> <span class="line-hover">Decoration</span> </label>\n'+'                                        <label> <input type="radio" name="product_cat" value="furniture"> <span class="line-hover">Furniture</span> </label>\n'+
+ '                                       <label> <input type="radio" name="product_cat" value="table"> <span class="line-hover">Table</span> </label> <label> <input type="radio" name="product_cat" value="chair"> <span class="line-hover">Chair</span> </label>\n'+'                                    </div>\n'+'                                    <div class="search-fields">\n'+'                                        <input type="text" placeholder="Search">\n'+'                                        <button class="submit-button"><i class="icon-magnifier"></i></button>\n'+
+  '                                  </div>\n'+
+ '                               </form>\n'+
+   '                         </div>\n'+
+  '                      </div>\n'+
+ '                   </div>\n'+
+  '              </div>\n'+
+  '          </div>\n'+
+   '     </div>\n'+
+ '   </div>\n'+
+ '   <!--====================  End of search overlay  ====================-->\n'+
+  '  <!--====================  scroll top ====================-->\n'+
+   ' <a href="#" class="scroll-top" id="scroll-top">\n'+
+    '    <i class="arrow-top icon-arrow-up"></i>\n'+
+   '     <i class="arrow-bottom icon-arrow-up"></i>\n'+
+    '</a>\n'+
+    '<!--====================  End of scroll top  ====================-->\n'+
+    '<!-- JS    ============================================ -->\n'+
+    '<!-- Modernizer JS -->\n'+
+    '<script src="assets/js/vendor/modernizr-2.8.3.min.js"><\/script>\n'+
+    '<!-- jQuery JS -->\n'+'<script src="assets/js/vendor/jquery-3.3.1.min.js"><\/script>\n'+
+    '<!-- Bootstrap JS -->\n'+'<script src="assets/js/vendor/bootstrap.min.js"><\/script>\n'+
+    '<!-- Fullpage JS -->\n'+'<script src="assets/js/plugins/fullpage.min.js"><\/script>\n'+
+        '<!-- Slick Slider JS -->\n'+'<script src="assets/js/plugins/slick.min.js"><\/script>\n'+
+            '<!-- Countdown JS -->\n'+'<script src="assets/js/plugins/countdown.min.js"><\/script>\n'+
+                '<!-- Magnific Popup JS -->\n'+'<script src="assets/js/plugins/magnific-popup.js"><\/script>\n'+'<!-- Easyzoom JS -->\n'+
+                    '<script src="assets/js/plugins/easyzoom.js"><\/script>\n'+'<!-- ImagesLoaded JS -->\n'+
+                        '<script src="assets/js/plugins/images-loaded.min.js"><\/script>\n'+
+                        '<!-- Isotope JS -->\n'+'<script src="assets/js/plugins/isotope.min.js"><\/script>\n'+'<!-- YTplayer JS -->\n'+
+                            '<script src="assets/js/plugins/YTplayer.js"><\/script>\n'+'<!-- Instagramfeed JS -->\n'+
+                                '<script src="assets/js/plugins/jquery.instagramfeed.min.js"><\/script>\n'+
+                                '<!-- Ajax Mail JS -->\n'+'<script src="assets/js/plugins/ajax.mail.js"><\/script>\n'+
+                                '<!-- wow JS -->\n'+
+   ' <script src="assets/js/plugins/wow.min.js"><\/script>\n'+
+  '  <!-- Main JS -->\n'+
+ '   <script src="assets/js/main.js"><\/script>\n'+'</body>\n'+'</html>';
+            
+            // Convert the text to BLOB.
+            const textToBLOB = new Blob([data], { type: 'text/html' });
+            const sFileName =  document.getElementById('txt1').value.replaceAll(' ', '-')+'.html';	   // The file to save the data.
+           // console.log
+           // sFileName.replaceAll(' ', '-')+'.html';
+    
+            let newLink = document.createElement("a");
+            newLink.download = sFileName;
+    
+            if (window.webkitURL != null) {
+                newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+            }
+            else {
+                newLink.href = window.URL.createObjectURL(textToBLOB);
+                newLink.style.display = "none";
+                document.body.appendChild(newLink);
+            }
+    
+            newLink.click(); 
+        }
+        function uploadImage(){
+            document.getElementById("imagewrap").innerHTML += 
+            '<div class="image" id="image'+(document.querySelectorAll('.image').length+1)+'"><input type="file" id="img'+(document.querySelectorAll('.image').length+1)+'" placeholder="Image" /></div>';
+        };
+        function SelectAll(id)
+        {
+            document.getElementById(id).focus();
+            document.getElementById(id).select();
+        }
+    </script>
+    </html>
